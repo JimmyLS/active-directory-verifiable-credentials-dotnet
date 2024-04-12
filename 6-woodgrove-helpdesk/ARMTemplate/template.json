@@ -76,6 +76,9 @@
       "name": "[parameters('webAppName')]",
       "location": "[resourceGroup().location]",
       "kind": "app",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -132,6 +135,14 @@
             {
               "name": "VerifiedID__DidAuthority",
               "value": "[parameters('DidAuthority')]"
+            },
+            {
+              "name": "AppSettings__UseTeamsWebhook",
+              "value": "false"
+            },
+            {
+              "name": "AppSettings__TeamsWebhookURL",
+              "value": "...set to incoming webhook if you decide to use a Teams Webhook..."
             }
           ]
         }
