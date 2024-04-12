@@ -1,0 +1,42 @@
+{
+  "id": "did:web:jimmydid.tech1108.com",
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    {
+      "@base": "did:web:jimmydid.tech1108.com"
+    }
+  ],
+  "service": [
+    {
+      "id": "#linkeddomains",
+      "type": "LinkedDomains",
+      "serviceEndpoint": {
+        "origins": ["https://jimmydid.tech1108.com/"]
+      }
+    },
+    {
+      "id": "#hub",
+      "type": "IdentityHub",
+      "serviceEndpoint": {
+        "instances": [
+          "https://hub.did.msidentity.com/v1.0/5038e6c5-6954-409b-bb27-782ea230c724"
+        ]
+      }
+    }
+  ],
+  "verificationMethod": [
+    {
+      "id": "#f4909cfeb2be4c22824c5272c294acccvcSigningKey-cecf0",
+      "controller": "did:web:jimmydid.tech1108.com",
+      "type": "JsonWebKey2020",
+      "publicKeyJwk": {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "V0rgIH3oRsHqhlaf5O0oafbsuCNtZ79oNaxCEBhuMQs",
+        "y": "HqEP_2LbYPV5DtFUoDR3_qHRawdDbWdgt5kfun9D3qo"
+      }
+    }
+  ],
+  "authentication": ["#f4909cfeb2be4c22824c5272c294acccvcSigningKey-cecf0"],
+  "assertionMethod": ["#f4909cfeb2be4c22824c5272c294acccvcSigningKey-cecf0"]
+}

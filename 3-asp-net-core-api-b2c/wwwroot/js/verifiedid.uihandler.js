@@ -2,6 +2,7 @@
 function renderQRCode(url) {
     document.getElementById('qrcode').style.display = "block";
     document.getElementById("qrcode").getElementsByTagName("img")[0].style.opacity = "1.0";
+    document.getElementById("qrcode").getElementsByTagName("img")[0].style.display = "inline-flex";
     qrcode.makeCode(url);
 }
 function dimQRCode() {

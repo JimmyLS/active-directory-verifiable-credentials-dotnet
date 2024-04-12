@@ -87,7 +87,7 @@ namespace B2CVerifiedID
         public async Task<IActionResult> SensitivePage() {
             CheckLocalhost();
 
-            var claimMatchConfidenceScore = User.FindFirst( "VCMatchConfidenceScore" );
+            var claimMatchConfidenceScore = User.FindFirst( "extension_VCMatchConfidenceScore" );
             if (claimMatchConfidenceScore == null) {
                 string b2cMfaPolicyId = _configuration["AzureAdB2C:MFAPolicyId"];
                 _log.LogTrace( $"B2C MFA PolicyId = {b2cMfaPolicyId}" );

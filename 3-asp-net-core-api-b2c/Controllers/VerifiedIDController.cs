@@ -118,7 +118,7 @@ namespace B2CVerifiedID {
         private string? GetOid() {
             Claim? oidClaim = User?.Claims.Where( x => x.Type == "oid" ).FirstOrDefault();
             if (null == oidClaim) {
-                oidClaim = User?.Claims.Where( x => x.Type == "uid" ).FirstOrDefault();
+                oidClaim = User?.Claims.Where( x => x.Type == "sub" ).FirstOrDefault();
             }
             if (null == oidClaim) {
                 oidClaim = User?.Claims.Where( x => x.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier" ).FirstOrDefault();
@@ -147,10 +147,10 @@ namespace B2CVerifiedID {
                 _cache.TryGetValue( $"{oid}_photo", out photo );
             }
             Dictionary<string, string> claims = new Dictionary<string, string>();
-            claims.Add( "email", User.FindFirst( "email" )!.Value );
+            claims.Add( "email", User.FindFirst( "emails" )!.Value );
             claims.Add( "name", User.FindFirst( "name" )!.Value );
             claims.Add( "oid", oid );
-            claims.Add( "tid", User.FindFirst( "tid" )!.Value );
+            // claims.Add( "tid", User.FindFirst( "tid" )!.Value );
             claims.Add( "given_name", User.FindFirst( "given_name" )!.Value );
             claims.Add( "family_name", User.FindFirst( "family_name" )!.Value );
             claims.Add( "memberStatus", "Diamond" );        // this illustrates that you can set claims that come from other sources
@@ -450,7 +450,7 @@ namespace B2CVerifiedID {
                 int pinCode = RandomNumberGenerator.GetInt32( 1, int.Parse( "".PadRight( issuancePinCodeLength, '9' ) ) );
                 SetPinCode( request, string.Format( "{0:D" + issuancePinCodeLength.ToString() + "}", pinCode ) );
             }
-            SetExpirationDate( request );
+            // SetExpirationDate( request );
             return request;
         }
         private IssuanceRequest SetExpirationDate( IssuanceRequest request) {

@@ -290,9 +290,9 @@ namespace AspNetCoreVerifiableCredentials
             // if pincode is required, set it up in the request
             if (issuancePinCodeLength > 0 && !IsMobile() ) {
                 int pinCode = RandomNumberGenerator.GetInt32( 1, int.Parse( "".PadRight( issuancePinCodeLength, '9' ) ) );
-                SetPinCode( request, string.Format( "{0:D" + issuancePinCodeLength.ToString() + "}", pinCode ) );
+                 SetPinCode( request, string.Format( "{0:D" + issuancePinCodeLength.ToString() + "}", pinCode ) );
             }
-            SetExpirationDate( request );
+            // SetExpirationDate( request );
             return request;
         }
         private IssuanceRequest SetExpirationDate( IssuanceRequest request) {
