@@ -275,7 +275,7 @@ namespace AspNetCoreVerifiableCredentials {
                     state = string.IsNullOrEmpty( stateId ) ? Guid.NewGuid().ToString() : stateId,
                     headers = new Dictionary<string, string>() { { "api-key", this._apiKey } }
                 },
-                type = "ignore-this",
+                type = _configuration["VerifiedId:CredentialType"],
                 manifest = _configuration["VerifiedID:CredentialManifest"],
                 pin = null
             };

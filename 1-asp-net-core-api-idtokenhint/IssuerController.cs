@@ -46,8 +46,8 @@ namespace AspNetCoreVerifiableCredentials
 
         private IssuanceRequest SetClaims( IssuanceRequest request ) {
             request.claims = new Dictionary<string, string>();
-            request.claims.Add( "given_name", "Megan" );
-            request.claims.Add( "family_name", "Bowen" );
+            request.claims.Add( "given_name", "Jimmy" );
+            request.claims.Add( "family_name", "Sun" );
 
             string photoClaimName = "";
             // get photo claim from manifest
@@ -278,7 +278,7 @@ namespace AspNetCoreVerifiableCredentials
                     state = string.IsNullOrEmpty( stateId ) ? Guid.NewGuid().ToString() : stateId,
                     headers = new Dictionary<string, string>() { { "api-key", this._apiKey } }
                 },
-                type = "ignore-this",
+                type = _configuration["VerifiedId:CredentialType"],
                 manifest = _configuration["VerifiedID:CredentialManifest"],
                 pin = null
             };
