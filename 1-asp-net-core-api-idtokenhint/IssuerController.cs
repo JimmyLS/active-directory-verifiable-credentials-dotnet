@@ -291,7 +291,7 @@ namespace AspNetCoreVerifiableCredentials
                 int pinCode = RandomNumberGenerator.GetInt32( 1, int.Parse( "".PadRight( issuancePinCodeLength, '9' ) ) );
                  SetPinCode( request, string.Format( "{0:D" + issuancePinCodeLength.ToString() + "}", pinCode ) );
             }
-            // SetExpirationDate( request );
+            SetExpirationDate( request ); // Don't comment this line, instead call Verified ID Admin API to set attribute "allowOverrideValidityIntervalOnIssuance" to "true"
             return request;
         }
         private IssuanceRequest SetExpirationDate( IssuanceRequest request) {
